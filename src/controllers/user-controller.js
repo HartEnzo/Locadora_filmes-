@@ -1,5 +1,5 @@
 import User from "../models/user-model.js";
-
+import jwtService from "../services/jwt-service.js"
 export const signup = async (req, res) => {
     try {
       const user = await User.create({
@@ -21,7 +21,8 @@ export const login = async (req, res) => {
     }).exec();
 
     if (user && (await user.isValidPassword(req.body.password))) {
-      res.json(user);
+     const token = jwtService.generateAccessToken(user);
+      res.json(token);
     }
 
     res.status(404).json({
