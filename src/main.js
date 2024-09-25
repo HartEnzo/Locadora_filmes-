@@ -1,8 +1,8 @@
 import e from "express";
 import "dotenv/config";
 import "./config/db.js"
-import movie_router from "./routes/movie-route.js"
-import user_router from "./routes/user-route.js"
+import movie_router from "./routes/movie-router.js"
+import user_router from "./routes/user-router.js"
 
 const app = e();
 
