@@ -10,5 +10,17 @@ const movieSchema = new Schema({
         type: String, 
         required: true,
     },
-    re
-})
+     releaseDate: {
+        type: Date,
+        required: true,
+      },
+      rentedBy: {
+        type: Schema.ObjectId,
+        ref: "User",
+        required: false,
+      },
+    });
+    
+    const Movie = model("Movie", movieSchema);
+    
+    export default Movie;

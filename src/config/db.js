@@ -4,5 +4,7 @@ import mongoose from "mongoose";
     try{
     await mongoose.connect(process.env.MONGODB);
     console.log("connect with DB");
-    } ca
+    } catch (error) {
+        console.log(error)
+    }
 })();

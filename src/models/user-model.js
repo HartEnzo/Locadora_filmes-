@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import bcrypt from "bcrypt";
 
 const userShema = new Schema({
      email: {
@@ -21,12 +22,14 @@ const userShema = new Schema({
      },
 });
 
-userShema.pre("save", () => {
-    console.log(this.password)
-
-    bcrypt.hash()
-})
-
-const User = model("User", userShema);
-
-export default User;
+userSchema.pre("save", async function () {
+   this.password = await bcrypt.hash(this.password, 10);
+ });
+ 
+ userSchema.methods.isValidPassword = async function (password) {
+   return await bcrypt.compare(password, this.password);
+ };  
+ 
+ const User = model("User", userSchema);
+ 
+ export default User;

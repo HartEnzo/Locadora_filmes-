@@ -1,10 +1,9 @@
 import { Router } from "express"
-import {store, index} from "../"
+import {store, index} from "../controllers/movie-controller.js"
 
 const router = Router();
 
-router.post("/" /*Cadastrar filmes */)
-router.get("/"/* Ver os filmes do catalogo */)
+router.post("/", store);
+router.get("/", index);
 
-
-export default router
+export default router;
