@@ -5,15 +5,15 @@ const userShema = new Schema({
      email: {
         type: String,
         required: true,
-        unique: true 
+        unique: true,
      },
      passwork: {
         type: String,
-        required: true
+        required: true,
      },
      nickName: {
          type: String,
-         required: false
+         required: false,
      },
      role: {
         type: String,
