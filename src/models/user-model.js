@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 import bcrypt from "bcrypt";
 
-const userShema = new Schema({
+const userSchema = new Schema({
      email: {
         type: String,
         required: true,
