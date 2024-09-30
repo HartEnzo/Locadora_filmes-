@@ -1,16 +1,23 @@
-import jsonwebtoken from "jsonwebtoken"
+import jsonwebtoken from "jsonwebtoken";
 
-export const generateAccessToken = (user) => {
-     const token = jsonwebtoken.sign ({
-        _id: user._id,
-        email: user.email,
-        role: user.role,
-        nickname: nickname
-     }, process.env.JWT_PRIVATE_KET,
-    {
-        expiresIn: "7d"
-    }
-);
-
-return token;
-};
+export const generateAccessToken = (user) => 
+ 
+    jsonwebtoken.sign(
+        {
+          _id: user._id,
+          email: user.email,
+          role: user.role,
+        },
+        process.env.JWT_PRIVATE_KEY,
+        {
+          expiresIn: "1d",
+        }
+      );
+    
+    const verifyAccessToken = (token) =>
+      jsonwebtoken.verify(token, process.env.JWT_PRIVATE_KEY);
+    
+    export default {
+      generateAccessToken,
+      verifyAccessToken,
+    };

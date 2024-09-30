@@ -2,7 +2,7 @@ import Movie from "../models/movie-model.js"
 
 export const store = async (req, res) => {
     try {
-        const content = await Movie .create(req.body);
+        const content = await Movie.create(req.body);
         
         res.status(201).josn(content)
     }catch (error) {
